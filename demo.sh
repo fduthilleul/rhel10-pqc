@@ -76,8 +76,8 @@ CURRENT_POLICY=$(update-crypto-policies --show)
 
 if [[ "$CURRENT_POLICY" != "DEFAULT" ]]; then
     echo ""
-    show_command "update-crypto-policies --set DEFAULT"
-    update-crypto-policies --set DEFAULT
+#    show_command "update-crypto-policies --set DEFAULT"
+    update-crypto-policies --set DEFAULT &
     echo -e "${GREEN}✓ Crypto policy reset to DEFAULT${NC}"
 else
     echo -e "${GREEN}✓ Already set to DEFAULT${NC}"
