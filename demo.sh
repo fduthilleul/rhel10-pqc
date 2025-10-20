@@ -249,7 +249,25 @@ read -n 1 -r
 echo
 
 # Set up trap to handle Ctrl+C gracefully
-trap 'echo -e "\n${GREEN}================================${NC}"; echo -e "${GREEN}Demo completed successfully!${NC}"; echo -e "${GREEN}================================${NC}\n"; exit 0' SIGINT
+#trap 'echo -e "\n${GREEN}================================${NC}"; echo -e "${GREEN}Demo completed successfully!${NC}"; echo -e "${GREEN}================================${NC}\n"; exit 0' SIGINT
+
+show_summary() {
+    show_step "What have we seen in this demo"
+    echo -e "${GREEN}✓ Post-quantum key exchange in SSH${NC}"
+    echo -e "${GREEN}✓ Post-quantum signatures${NC}"
+    echo -e "${GREEN}✓ Post-quantum TLS certificate${NC}"
+    echo -e "${GREEN}✓ Post-quantum TLS session establishment${NC}"
+    echo -e "\n${GREEN}================================${NC}"
+    echo -e "${GREEN}Next time it will be OpenShift :-)${NC}"
+    echo -e "${GREEN}================================${NC}\n"
+}
+
+# Handle Ctrl+C gracefully
+trap 'echo -e "\n${GREEN}================================${NC}";
+      echo -e "${GREEN}Demo interrupted by user${NC}";
+      echo -e "${GREEN}================================${NC}\n";
+      show_summary;
+      exit 0' SIGINT
 
 if [[ "$REPLY" == " " ]]; then
     echo ""
@@ -258,12 +276,12 @@ if [[ "$REPLY" == " " ]]; then
     openssl s_server -cert localhost-mldsa.crt -key localhost-mldsa.key
 fi
 
-show_step "What have we seen in this demo"
-echo -e "${GREEN}✓ Post-quantum key exchange in SSH${NC}"
-echo -e "${GREEN}✓ Post-quantum signatures${NC}"
-echo -e "${GREEN}✓ Post-quantum TLS certificate${NC}"
-echo -e "${GREEN}✓ Post-quantum TLS session establishment${NC}"
-
-echo -e "\n${GREEN}================================${NC}"
-echo -e "${GREEN}Next time it will be OpenShift :-)${NC}"
-echo -e "${GREEN}================================${NC}\n"
+#show_step "What have we seen in this demo"
+#echo -e "${GREEN}✓ Post-quantum key exchange in SSH${NC}"
+#echo -e "${GREEN}✓ Post-quantum signatures${NC}"
+#echo -e "${GREEN}✓ Post-quantum TLS certificate${NC}"
+#echo -e "${GREEN}✓ Post-quantum TLS session establishment${NC}"
+#
+#echo -e "\n${GREEN}================================${NC}"
+#echo -e "${GREEN}Next time it will be OpenShift :-)${NC}"
+#echo -e "${GREEN}================================${NC}\n"
