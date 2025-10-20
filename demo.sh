@@ -31,9 +31,9 @@ prompt_continue() {
 
 # Function to display step header
 show_step() {
-    echo -e "\n${BLUE}================================${NC}"
+    echo -e "\n${BLUE}====================================${NC}"
     echo -e "${GREEN}$1${NC}"
-    echo -e "${BLUE}================================${NC}"
+    echo -e "${BLUE}====================================${NC}"
 }
 
 # Function to display command
