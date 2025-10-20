@@ -62,7 +62,7 @@ fi
 prompt_continue
 
 # Clean up directory
-show_step "Demo Preparation: Cleaning up"
+show_step "Setting up the demo"
 #show_command "rm -f mldsa-privatekey.pem mldsa-publickey.pem message signature localhost-mldsa.key localhost-mldsa.crt"
 rm -f mldsa-privatekey.pem mldsa-publickey.pem message signature localhost-mldsa.key localhost-mldsa.crt
 echo -e "${GREEN}✓ Cleanup completed${NC}"
