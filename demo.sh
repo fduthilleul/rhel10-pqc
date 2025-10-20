@@ -163,14 +163,14 @@ echo -e "${GREEN}    KexAlgorithms mlkem768x25519-sha256${NC}\n"
 show_command "vi /etc/ssh/ssh_config"
 prompt_continue
 vi /etc/ssh/ssh_config
-prompt_continue
+#prompt_continue
 
 # Step 10: Restart SSHD service
 show_step "Step 10: Restart SSHD service"
 show_command "systemctl restart sshd"
 systemctl restart sshd
 echo -e "${GREEN}✓ SSHD service restarted${NC}"
-prompt_continue
+#prompt_continue
 
 # Step 11: Connect to remote server
 show_step "Step 11: Connect to a server configured with TEST-PQ (verbose mode)"
@@ -242,6 +242,9 @@ echo -e "${YELLOW}Press SPACE when ready to start the server:${NC}"
 read -n 1 -r
 echo
 
+# Set up trap to handle Ctrl+C gracefully
+trap 'echo -e "\n${GREEN}================================${NC}"; echo -e "${GREEN}Demo completed successfully!${NC}"; echo -e "${GREEN}================================${NC}\n"; exit 0' SIGINT
+
 if [[ "$REPLY" == " " ]]; then
     echo ""
     show_command "openssl s_server -cert localhost-mldsa.crt -key localhost-mldsa.key"
@@ -249,6 +252,12 @@ if [[ "$REPLY" == " " ]]; then
     openssl s_server -cert localhost-mldsa.crt -key localhost-mldsa.key
 fi
 
+show_step "What have we seen in this demo"
+echo -e "${GREEN}✓ Post-quantum key exchange in SSH${NC}"
+echo -e "${GREEN}✓ Post-quantum signatures${NC}"
+echo -e "${GREEN}✓ Post-quantum TLS certificate${NC}"
+echo -e "${GREEN}✓ Post-quantum TLS session establishment${NC}"
+
 echo -e "\n${GREEN}================================${NC}"
-echo -e "${GREEN}Demo completed successfully!${NC}"
+echo -e "${GREEN}Next time it will be OpenShift :-)${NC}"
 echo -e "${GREEN}================================${NC}\n"
