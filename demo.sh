@@ -7,12 +7,23 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# Function to prompt user to continue
+# Function to prompt user to continue using y
+#prompt_continue() {
+#    echo -e "\n${YELLOW}Press 'y' to continue to the next step (or any other key to exit): ${NC}"
+#    read -n 1 -r
+#    echo
+#    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+#        echo -e "${RED}Exiting demo.${NC}"
+#        exit 0
+#    fi
+#}
+
+# Function to prompt user to continue using space bar
 prompt_continue() {
-    echo -e "\n${YELLOW}Press 'y' to continue to the next step (or any other key to exit): ${NC}"
+    echo -e "\n${YELLOW}Press SPACE to continue to the next step (or any other key to exit): ${NC}"
     read -n 1 -r
     echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    if [[ "$REPLY" != " " ]]; then
         echo -e "${RED}Exiting demo.${NC}"
         exit 0
     fi
