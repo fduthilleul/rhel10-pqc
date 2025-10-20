@@ -105,7 +105,7 @@ if [[ -z "$USER_MESSAGE" ]]; then
     USER_MESSAGE="This is a test message for post-quantum cryptography"
 fi
 echo -e "${GREEN}✓ Message saved: ${NC}$USER_MESSAGE"
-prompt_continue
+#prompt_continue
 
 # Step 1: Verify installed crypto packages
 show_step "Step 1: Verify which crypto packages are already installed"
