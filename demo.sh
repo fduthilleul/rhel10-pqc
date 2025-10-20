@@ -259,9 +259,7 @@ show_summary() {
     echo -e "${GREEN}✓ Post-quantum signatures${NC}"
     echo -e "${GREEN}✓ Post-quantum TLS certificate${NC}"
     echo -e "${GREEN}✓ Post-quantum TLS session establishment${NC}"
-    echo -e "\n${GREEN}================================${NC}"
-    echo -e "${GREEN}Next time it will be OpenShift :-)${NC}"
-    echo -e "${GREEN}================================${NC}\n"
+    show_step "Next time: PQC demo with OpenShift"
 }
 
 # Handle Ctrl+C gracefully
@@ -277,13 +275,3 @@ if [[ "$REPLY" == " " ]]; then
     echo -e "${GREEN}Starting server... (Press Ctrl+C to stop when done testing)${NC}\n"
     openssl s_server -cert localhost-mldsa.crt -key localhost-mldsa.key
 fi
-
-#show_step "What have we seen in this demo"
-#echo -e "${YELLOW}✓ Post-quantum key exchange in SSH${NC}"
-#echo -e "${YELLOW}✓ Post-quantum signatures${NC}"
-#echo -e "${YELLOW}✓ Post-quantum TLS certificate${NC}"
-#echo -e "${YELLOW}✓ Post-quantum TLS session establishment${NC}"
-#
-#echo -e "\n${GREEN}================================${NC}"
-#echo -e "${GREEN}Next time it will be OpenShift :-)${NC}"
-#echo -e "${GREEN}================================${NC}\n"
