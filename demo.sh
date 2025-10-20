@@ -38,7 +38,7 @@ show_step() {
 
 # Function to display command
 show_command() {
-    echo -e "${CYAN}Command: ${NC}$1\n"
+    echo -e "${GREEN}Command: ${NC}$1\n"
 }
 
 # Verify RHEL 10
@@ -62,17 +62,17 @@ fi
 prompt_continue
 
 # Clean up directory
-show_step "Cleanup: Removing previous demo files"
-show_command "rm -f mldsa-privatekey.pem mldsa-publickey.pem message signature localhost-mldsa.key localhost-mldsa.crt"
+show_step "Demo Preparation: Cleaning up"
+#show_command "rm -f mldsa-privatekey.pem mldsa-publickey.pem message signature localhost-mldsa.key localhost-mldsa.crt"
 rm -f mldsa-privatekey.pem mldsa-publickey.pem message signature localhost-mldsa.key localhost-mldsa.crt
 echo -e "${GREEN}✓ Cleanup completed${NC}"
-prompt_continue
+#prompt_continue
 
 # Reset crypto policies to DEFAULT
-show_step "Reset: Setting crypto policy back to DEFAULT"
-show_command "update-crypto-policies --show"
+#show_step "Reset: Setting crypto policy back to DEFAULT"
+#show_command "update-crypto-policies --show"
 CURRENT_POLICY=$(update-crypto-policies --show)
-echo "Current policy: $CURRENT_POLICY"
+#echo "Current policy: $CURRENT_POLICY"
 
 if [[ "$CURRENT_POLICY" != "DEFAULT" ]]; then
     echo ""
@@ -82,11 +82,11 @@ if [[ "$CURRENT_POLICY" != "DEFAULT" ]]; then
 else
     echo -e "${GREEN}✓ Already set to DEFAULT${NC}"
 fi
-prompt_continue
+#prompt_continue
 
 # Remove crypto-policies-pq-preview if installed
-show_step "Reset: Removing crypto-policies-pq-preview if installed"
-show_command "rpm -qa | grep crypto-policies-pq-preview"
+#show_step "Reset: Removing crypto-policies-pq-preview if installed"
+#show_command "rpm -qa | grep crypto-policies-pq-preview"
 if rpm -qa | grep -q crypto-policies-pq-preview; then
     echo ""
     show_command "dnf remove -y crypto-policies-pq-preview"
@@ -95,7 +95,7 @@ if rpm -qa | grep -q crypto-policies-pq-preview; then
 else
     echo -e "${GREEN}✓ Package not installed${NC}"
 fi
-prompt_continue
+#prompt_continue
 
 # Ask user for custom message
 show_step "Setup: Enter your custom message for signing"
