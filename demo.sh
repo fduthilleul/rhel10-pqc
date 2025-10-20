@@ -89,8 +89,8 @@ fi
 #show_command "rpm -qa | grep crypto-policies-pq-preview"
 if rpm -qa | grep -q crypto-policies-pq-preview; then
     echo ""
-    show_command "dnf remove -y crypto-policies-pq-preview"
-    dnf remove -y crypto-policies-pq-preview
+#    show_command "dnf remove -y crypto-policies-pq-preview"
+    dnf remove -y crypto-policies-pq-preview &
     echo -e "${GREEN}✓ Package removed${NC}"
 else
     echo -e "${GREEN}✓ Package not installed${NC}"
