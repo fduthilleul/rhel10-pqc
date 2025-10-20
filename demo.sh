@@ -75,7 +75,7 @@ CURRENT_POLICY=$(update-crypto-policies --show)
 #echo "Current policy: $CURRENT_POLICY"
 
 if [[ "$CURRENT_POLICY" != "DEFAULT" ]]; then
-    echo ""
+#    echo ""
 #    show_command "update-crypto-policies --set DEFAULT"
     update-crypto-policies --set DEFAULT &
     echo -e "${GREEN}✓ Crypto policy reset to DEFAULT${NC}"
@@ -88,7 +88,7 @@ fi
 #show_step "Reset: Removing crypto-policies-pq-preview if installed"
 #show_command "rpm -qa | grep crypto-policies-pq-preview"
 if rpm -qa | grep -q crypto-policies-pq-preview; then
-    echo ""
+#    echo ""
 #    show_command "dnf remove -y crypto-policies-pq-preview"
     dnf remove -y crypto-policies-pq-preview &
     echo -e "${GREEN}✓ Package removed${NC}"
