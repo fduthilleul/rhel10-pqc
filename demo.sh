@@ -114,33 +114,39 @@ rpm -qa | grep crypto
 prompt_continue
 
 # Step 2: Check for updates
-show_step "Step 2: Verify if there are updated packages"
-show_command "dnf check-update crypto-policies crypto-policies-scripts"
-dnf check-update crypto-policies crypto-policies-scripts
-prompt_continue
+#show_step "Step 2: Verify if there are updated packages"
+#show_command "dnf check-update crypto-policies crypto-policies-scripts"
+#dnf check-update crypto-policies crypto-policies-scripts
+#prompt_continue
 
-# Step 3: Display package information
-show_step "Step 3: Display the information about these crypto packages"
+# Step 2: Display package information
+show_step "Step 2: Display the information about these crypto packages"
 show_command "dnf info crypto-policies crypto-policies-scripts"
 dnf info crypto-policies crypto-policies-scripts
 prompt_continue
 
-# Step 4: Show current crypto setting
-show_step "Step 4: Show the system-wide crypto current setting"
+# Step 3: Show current crypto setting
+show_step "Step 3: Show the system-wide crypto current setting"
 show_command "update-crypto-policies --show"
 update-crypto-policies --show
 prompt_continue
 
-# Step 5: Show OpenSSL providers
-show_step "Step 5: Show the list of OpenSSL providers"
+# Step 4: Show OpenSSL providers
+show_step "Step 4: Show the list of OpenSSL providers"
 show_command "openssl list -providers"
 openssl list -providers
 prompt_continue
 
-# Step 6: Install TEST-PQ crypto policies
-show_step "Step 6: Install the TEST-PQ crypto policies"
+# Step 5: Install TEST-PQ crypto policies
+show_step "Step 5: Install the TEST-PQ crypto policies"
 show_command "dnf install -y crypto-policies-pq-preview"
 dnf install -y crypto-policies-pq-preview
+prompt_continue
+
+# Step 6: Display package information
+show_step "Step 6: Display the information about this new crypto package"
+show_command "dnf info crypto-policies-pq-preview"
+dnf info crypto-policies-pq-preview
 prompt_continue
 
 # Step 7: Set system wide crypto to TEST-PQ
