@@ -255,17 +255,17 @@ echo
 
 show_summary() {
     show_step "What have we seen in this demo"
-    echo -e "${GREEN}✓ Post-quantum key exchange in SSH${NC}"
-    echo -e "${GREEN}✓ Post-quantum signatures${NC}"
-    echo -e "${GREEN}✓ Post-quantum TLS certificate${NC}"
-    echo -e "${GREEN}✓ Post-quantum TLS session establishment${NC}"
+    echo -e "${YELLOW}✓ Post-quantum key exchange in SSH${NC}"
+    echo -e "${YELLOW}✓ Post-quantum signatures${NC}"
+    echo -e "${YELLOW}✓ Post-quantum TLS certificate${NC}"
+    echo -e "${YELLOW}✓ Post-quantum TLS session establishment${NC}"
     show_step "Next time: PQC demo with OpenShift"
 }
 
 # Handle Ctrl+C gracefully
-trap 'echo -e "\n${GREEN}================================${NC}";
+trap 'echo -e "\n${GREEN}===================================${NC}";
       echo -e "${GREEN}Demo interrupted by user${NC}";
-      echo -e "${GREEN}================================${NC}\n";
+      echo -e "${GREEN}===================================${NC}\n";
       show_summary;
       exit 0' SIGINT
 
