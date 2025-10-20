@@ -26,7 +26,7 @@ ssh -v root@IP address
 openssl list -signature-algorithms
 # Generate a private key
 openssl genpkey -algorithm mldsa65 -out mldsa-privatekey.pem
-# Generq=ate a public key
+# Generate a public key
 openssl pkey -in mldsa-privatekey.pem -pubout -out mldsa-publickey.pem
 # Sign a message
 openssl dgst -sign mldsa-privatekey.pem -out signature message
