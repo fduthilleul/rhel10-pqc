@@ -260,7 +260,7 @@ show_summary() {
     echo -e "${YELLOW}✓ Post-quantum TLS certificate${NC}"
     echo -e "${YELLOW}✓ Post-quantum TLS session establishment${NC}"
     echo -e ""
-    echo -e ${GREEN}✓ Demo inspited by this blog post: https://www.redhat.com/en/blog/post-quantum-cryptography-red-hat-enterprise-linux-10${NC}"
+    echo -e ${GREEN}✓ Demo inspired by this blog post: https://www.redhat.com/en/blog/post-quantum-cryptography-red-hat-enterprise-linux-10${NC}"
     echo -e ${GREEN}✓ Demo script available on: https://github.com/fduthilleul/rhel10-pqc/edit/main/demo.sh${NC}"
     show_step "Next time: PQC demo with OpenShift"
 }
