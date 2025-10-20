@@ -77,7 +77,8 @@ CURRENT_POLICY=$(update-crypto-policies --show)
 if [[ "$CURRENT_POLICY" != "DEFAULT" ]]; then
 #    echo ""
 #    show_command "update-crypto-policies --set DEFAULT"
-    update-crypto-policies --set DEFAULT &
+    update-crypto-policies --set DEFAULT >/tmp/update_crypto.log 2>&1 &
+    disown
     echo -e "${GREEN}✓ Crypto policy reset to DEFAULT${NC}"
 else
     echo -e "${GREEN}✓ Already set to DEFAULT${NC}"
@@ -90,7 +91,8 @@ fi
 if rpm -qa | grep -q crypto-policies-pq-preview; then
 #    echo ""
 #    show_command "dnf remove -y crypto-policies-pq-preview"
-    dnf remove -y crypto-policies-pq-preview &
+    dnf remove -y crypto-policies-pq-preview >/tmp/dnf_remove.log 2>&1 &
+    disown
     echo -e "${GREEN}✓ Package removed${NC}"
 else
     echo -e "${GREEN}✓ Package not installed${NC}"
